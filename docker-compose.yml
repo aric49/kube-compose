@@ -2,6 +2,7 @@ version: "3.2"
 services:
 
   etcd:
+    container_name: kube-etcd
     image: quay.io/coreos/etcd:latest
     ports:
       - "2379"
@@ -14,6 +15,7 @@ services:
         condition: always
 
   api:
+    container_name: kube-api
     image: gcr.io/google_containers/hyperkube-amd64:v1.10.2
     ports:
       - "80"
@@ -21,7 +23,7 @@ services:
       - "443"
     networks:
       - kubernetes
-    command: ["kube-apiserver", "--etcd-servers", "etcd:2379"]
+    command: ["kube-apiserver", "--etcd-servers", "http://kube-etcd:2379"]
 
     deploy:
       restart_policy:
@@ -29,6 +31,11 @@ services:
 
 networks:
   kubernetes:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.200.0.0/16
+
 
 volumes:
   db-data:
