@@ -14,6 +14,7 @@ services:
       restart_policy:
         condition: always
 
+#TODO: Start API server usingservice IP and pod IP blocks (--service-cluster-ip-range, --pod-ip-range)
   api:
     container_name: kube-api
     image: gcr.io/google_containers/hyperkube-amd64:v1.10.2
@@ -24,10 +25,16 @@ services:
     networks:
       - kubernetes
     command: ["kube-apiserver", "--etcd-servers", "http://kube-etcd:2379"]
-
     deploy:
       restart_policy:
         condition: always
+
+
+#TODO:
+# 1) Start Kubelet mounting docker socket
+# 2) Start controller manager and other services
+# 3) Generate and Volume mount the certs
+
 
 networks:
   kubernetes:
