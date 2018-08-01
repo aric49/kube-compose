@@ -41,7 +41,7 @@ services:
 #TODO:
 # 1) Start Kubelet mounting docker socket
 # 2) Start controller manager and other services
-# 3) Generate and Volume mount the certs
+# 3) Generate and Volume mount the certs - In Progress
 
 
 networks:
