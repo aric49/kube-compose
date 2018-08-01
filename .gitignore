@@ -3,4 +3,5 @@ kubernetes/*.pem
 kubernetes/*.cer
 kubernetes/*.crt
 kubernetes/*.key
-kuberntes/*.pub
+kubernetes/*.pub
+kubernetes/etcd/
