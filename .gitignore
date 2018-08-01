@@ -1,2 +1,5 @@
 #Files to ignore by Git
-kubernetes/*
+kubernetes/*.pem
+kubernetes/*.cer
+kubernetes/*.crt
+kubernetes/*.key

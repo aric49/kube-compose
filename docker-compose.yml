@@ -7,6 +7,7 @@ services:
     volumes:
       - ./kubernetes:/kubernetes
 
+
   etcd:
     container_name: kube-etcd
     image: quay.io/coreos/etcd:latest
@@ -29,7 +30,8 @@ services:
       - "8080"
       - "443"
     networks:
-      - kubernetes
+      kubernetes:
+        ipv4_address: 172.200.0.10
     command: ["kube-apiserver", "--etcd-servers", "http://kube-etcd:2379"]
     deploy:
       restart_policy:
