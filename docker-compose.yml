@@ -1,6 +1,12 @@
 version: "3.2"
 services:
 
+  cert_generator:
+    container_name: kube-cert
+    build: .
+    volumes:
+      - ./kubernetes:/kubernetes
+
   etcd:
     container_name: kube-etcd
     image: quay.io/coreos/etcd:latest
